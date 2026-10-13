@@ -27,7 +27,7 @@ ALLOWED_FILES = {
     "tests/test_repository.py",
     "tests/test_sampler.py",
 }
-IGNORED_PARTS = {".pytest_cache", ".ruff_cache", ".venv", "__pycache__", "build", "dist"}
+IGNORED_PARTS = {".git", ".pytest_cache", ".ruff_cache", ".venv", "__pycache__", "build", "dist"}
 
 
 def test_runtime_dependencies_are_empty() -> None:
