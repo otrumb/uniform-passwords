@@ -7,6 +7,49 @@ telemetry, deterministic-seed, or batch-uniqueness operations.
 Source repository: <https://github.com/otrumb/uniform-passwords>. No PyPI package,
 tag, release, or package publication exists.
 
+## First use from a source checkout
+
+Install Git, Python 3.12 or newer, and [uv](https://docs.astral.sh/uv/), then run:
+
+```console
+git clone https://github.com/otrumb/uniform-passwords.git
+cd uniform-passwords
+uv sync --locked --all-groups
+uv run uniform-passwords --help
+uv run uniform-passwords --length 32 --count 2 --no-ambiguous
+```
+
+Run `uv run` commands from the checkout directory. The last command prints two
+independent 32-character passwords. Output is sensitive: terminal scrollback,
+pipes, redirection, and receiving processes can retain it. Do not paste generated
+values into reports, issues, or logs.
+
+For a small JSON demonstration only (four digits are not a secure password):
+
+```console
+uv run uniform-passwords --length 4 --no-lowercase --no-uppercase --no-symbols --json
+```
+
+Complete output shape, with the generated value replaced by a placeholder:
+
+```json
+{
+  "schema_version": "uniform-passwords/v1",
+  "policy": {
+    "length": 4,
+    "lowercase": false,
+    "uppercase": false,
+    "digits": true,
+    "symbols": false,
+    "ambiguous": true,
+    "exclude": []
+  },
+  "valid_space": "10000",
+  "entropy_bits": 13.29,
+  "passwords": ["<generated-four-digit-value>"]
+}
+```
+
 ## Usage
 
 ```console
